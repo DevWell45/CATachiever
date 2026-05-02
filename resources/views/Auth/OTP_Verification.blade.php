@@ -168,7 +168,6 @@
                     <input type="text" maxlength="1" name="otp6" class="otp-input" inputmode="numeric" pattern="[0-9]*">
                    
                 </div>
-                <span class="text-xs">{{ session('otp_session')['user_id'] }}</span>
 
                 {{-- Submit --}}
                 <button type="submit"
