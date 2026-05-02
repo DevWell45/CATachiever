@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achiever | Log in</title>
+    <title>CAT Achiever | Log in</title>
     <link rel="shortcut icon" href="{{ asset('images/components/Logo.png') }}" type="image/x-icon">
 </head>
 <body class="w-screen h-screen overflow-hidden bg-[#128C40] font-sans">
