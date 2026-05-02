@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const CloseDropBar = document.getElementById('close-dropbar');
-    const ShowDropBar = document.getElementById('show-dropbar');
+    const Closedropdown = document.getElementById('close-dropdown');
+    const Showdropdown = document.getElementById('show-dropdown');
     const overlay = document.getElementById('hidden-overlay');
-    const card = document.getElementById('dropbar-card');
+    const card = document.getElementById('dropdown-card');
 
-    if (ShowDropBar) {
-        ShowDropBar.addEventListener('click', () => {
+    if (Showdropdown) {
+        Showdropdown.addEventListener('click', () => {
             overlay.classList.remove('hidden');
             overlay.classList.add('flex');
             card.classList.remove('hidden');
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (CloseDropBar){
-        CloseDropBar.addEventListener('click', () => {
+    if (Closedropdown){
+        Closedropdown.addEventListener('click', () => {
             overlay.classList.remove('flex');
             overlay.classList.add('hidden');
             card.classList.remove('flex');

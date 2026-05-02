@@ -15,17 +15,17 @@
         {{-- OVERLAY --}}
         <div id="hidden-overlay" class="fixed inset-0 bg-black/50 hidden items-start justify-center pt-10 z-50"></div>
         {{-- CARD --}}
-        <div id="dropbar-card" class="w-[300px] h-[400px] bg-white fixed flex-col hidden top-3 right-3 rounded-xl px-3 py-2 z-100">
+        <div id="dropdown-card" class="w-[300px] h-[400px] bg-white fixed flex-col hidden top-3 right-3 rounded-xl px-3 py-2 z-100">
             {{-- EXIT --}}
-            <svg id="close-dropbar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 absolute top-2 right-2 z-10 cursor-pointer">
+            <svg id="close-dropdown" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 absolute top-2 right-2 z-10 cursor-pointer">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
 
             {{-- HEADER --}}
             <div class="w-full h-[70px] border-b-1 border-gray-300 flex items-center flex-row gap-2">
                 {{-- Profile --}}
-                <div class="rounded-full w-[40px] h-[40px] bg-gray-300 flex items-center justify-center font-bold text-xl">
-                    J
+                <div class="rounded-full w-[40px] h-[40px] bg-black flex items-center justify-center font-bold text-xl text-white">
+                    {{ auth()->user()->name[0] }}
                 </div>
                 {{-- Name and Email --}}
                 <div class="flex flex-col leading-none">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-white">
-                    <div id="show-dropbar" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-semibold text-lg cursor-pointer">
+                    <div id="show-dropdown" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-bold text-lg cursor-pointer">
                         {{ auth()->user()->name[0] }}
                     </div>
                 </div>
