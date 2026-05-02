@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NVSU AchieVR</title>
+    <title>CAT Achiever</title>
     <link rel="shortcut icon" href="{{ asset('images/components/Logo.png') }}" type="image/x-icon">
 </head>
 <body class="w-full h-[100dvh] overflow-hidden bg-[#128C40]">
 
+    
+
     <div id="app" class="w-full h-full flex flex-col">
+
+        {{-- OVERLAY --}}
+        <div id="hidden-overlay" class="fixed inset-0 bg-black/50 hidden items-start justify-center pt-10 z-50"></div>
+        {{-- CARD --}}
+        <div id="dropbar-card" class="w-[300px] h-[400px] bg-white fixed flex-col hidden top-3 right-3 rounded-xl px-3 py-2 z-100">
+            {{-- EXIT --}}
+            <svg id="close-dropbar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 absolute top-2 right-2 z-10 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+
+            {{-- HEADER --}}
+            <div class="w-full h-[70px] border-b-1 border-gray-300 flex items-center flex-row gap-2">
+                {{-- Profile --}}
+                <div class="rounded-full w-[40px] h-[40px] bg-gray-300 flex items-center justify-center font-bold text-xl">
+                    J
+                </div>
+                {{-- Name and Email --}}
+                <div class="flex flex-col leading-none">
+                    <h3 class="font-bold text-m"> {{ auth()->user()->name }} </h3>
+                    <span class="text-[12px] text-gray-500 mt-[2px]">{{ auth()->user()->email }}</span>
+                </div>
+            </div>
+            {{-- BUTTONS --}}
+            <div class="w-full h-[305px] flex flex-col">
+                <div class="w-full h-[260px] flex flex-col py-2 gap-2 font-semibold">
+                    <button class="w-full h-[40px] rounded-[10px] bg-gray-200 cursor-pointer hover:bg-gray-300">Change Password</button>
+                    <button class="w-full h-[40px] rounded-[10px] bg-gray-200 cursor-pointer hover:bg-gray-300">Send Feedback</button>
+                </div>
+
+                <div class="w-full h-[45px] flex items-center ">
+                    <button id="logout" class="w-full font-semibold text-red-600 h-[40px] bg-gray-200 rounded-[10px] cursor-pointer hover:bg-gray-300">Log Out</button>
+                </div>
+            </div>
+        </div>
 
         {{-- HEADER BAR --}}
         <div class="w-full flex-shrink-0 bg-[#26AF5A]">
@@ -22,7 +58,7 @@
                 </div>
 
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-white">
-                    <div id="logout" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-semibold text-lg cursor-pointer">
+                    <div id="show-dropbar" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-semibold text-lg cursor-pointer">
                         {{ auth()->user()->name[0] }}
                     </div>
                 </div>
@@ -75,7 +111,7 @@
         {{-- MAIN CONTENT --}}
         <main class="flex-1 w-full overflow-y-auto min-h-0 bg-[#128C40]">
             <div class="min-h-full">
-                <h4 class="text-white font-bold text-base sm:text-lg md:text-xl px-4 py-4 tracking-wide sticky top-0 bg-transparent z-10">
+                <h4 class="text-white font-bold text-base sm:text-lg md:text-xl px-4 py-4 tracking-wide sticky top-0 bg-[#128C40] z-10">
                     Choose a Category
                 </h4>
                 <category-lists></category-lists>
@@ -84,6 +120,7 @@
     </div>
 
     @include('Hidden_Forms.logout')
-    @vite(['resources/js/app.js','resources/css/app.css', 'resources/js/functions/Auth/Logout.js'])
+    @vite(['resources/js/app.js','resources/css/app.css', 'resources/js/functions/Auth/Logout.js', 'resources/js/functions/pages/Home.js'])
+    
 </body>
 </html>

@@ -7,3 +7,4 @@ const app = createApp({});
 app.component('category-lists', Category);
 
 app.mount('#app')
+
