@@ -30,17 +30,18 @@
 
     <main class="w-full h-[calc(100dvh-80px)] flex items-center justify-center flex-col gap-3">
         {{-- QUESTION --}}
-        <div class="max-w-[300px] w-full py-5 text-black text-center flex items-center justify-center rounded-xl px-3 bg-[#CEF2F2]">
+        <div id="question" class="max-w-[300px] w-full py-5 text-black text-center flex items-center justify-center rounded-xl px-3 bg-[#CEF2F2]">
             What is the value of x in the equation: 2x + 5 = 15?
         </div>
 
         {{-- CHOICES --}}
         <ul class="w-full flex flex-col gap-2 items-center justify-center text-black">
-            @for ($i = 0; $i < 4; $i++)
-                <li class="max-w-[300px] w-full px-4 flex items-center justify-start py-3 rounded-xl text-xs font-semibold bg-[#CCCCCC] cursor-pointer hover:bg-gray-300">
-                    A. x = 5
-                </li>
-            @endfor
+            
+            <li id="choices" class="max-w-[300px] w-full px-4 flex items-center justify-start py-3 rounded-xl text-xs font-semibold bg-[#CCCCCC] cursor-pointer hover:bg-gray-300">
+                A. x = 5
+            </li>
+
+            <button onclick="nextQuestion()" class="max-w-[300px] w-full h-[40px] bg-gray-300 mt-3 rounded-xl hover:bg-gray-200 cursor-pointer ">Next Question</button>
         </ul>
     </main>
 
