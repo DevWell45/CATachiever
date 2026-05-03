@@ -29,22 +29,130 @@
     </header>
 
     <main class="w-full h-[calc(100dvh-80px)] flex items-center justify-center flex-col gap-3">
-        {{-- QUESTION --}}
-        <div id="question" class="max-w-[300px] w-full py-5 text-black text-center flex items-center justify-center rounded-xl px-3 bg-[#CEF2F2]">
-            What is the value of x in the equation: 2x + 5 = 15?
+    
+        <!-- QUESTION -->
+        <div id="question"
+            class="max-w-[300px] w-full py-5 text-black text-center flex items-center justify-center rounded-xl px-3 bg-[#CEF2F2]">
         </div>
 
-        {{-- CHOICES --}}
-        <ul class="w-full flex flex-col gap-2 items-center justify-center text-black">
-            
-            <li id="choices" class="max-w-[300px] w-full px-4 flex items-center justify-start py-3 rounded-xl text-xs font-semibold bg-[#CCCCCC] cursor-pointer hover:bg-gray-300">
-                A. x = 5
-            </li>
-
-            <button onclick="nextQuestion()" class="max-w-[300px] w-full h-[40px] bg-gray-300 mt-3 rounded-xl hover:bg-gray-200 cursor-pointer ">Next Question</button>
+        <!-- CHOICES -->
+        <ul id="choices"
+            class="w-full flex flex-col gap-2 items-center justify-center text-black relative">
         </ul>
+
+        <button 
+            id="next-btn"
+            onclick="nextQuestion()"
+            disabled
+            class="max-w-[300px] w-full h-[40px] bg-gray-300 mt-3 rounded-xl hover:bg-gray-200 opacity-0">
+            Next Question
+        </button>
+
     </main>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        const quiz = [
+    {
+        question: "What is the value of x in the equation: 2x + 5 = 15?",
+        choices: ["x = 5", "x = 10", "x = 3", "x = 7"],
+        answer: 0
+    },
+    {
+        question: "What is 5 + 3?",
+        choices: ["6", "7", "8", "9"],
+        answer: 2
+    }
+];
+
+let currentIndex = Math.floor(Math.random() * quiz.length);
+
+
+let current = currentIndex;
+let selected = null;
+let score = 0;
+
+function loadQuestion() {
+    const q = quiz[current];
+
+    document.getElementById("question").innerText = q.question;
+
+    const choicesEl = document.getElementById("choices");
+    choicesEl.innerHTML = "";
+
+    q.choices.forEach((choice, index) => {
+        const li = document.createElement("li");
+        li.className = "max-w-[300px] w-full px-4 py-3 rounded-xl text-xs font-semibold bg-[#CCCCCC] cursor-pointer hover:bg-gray-300";
+        li.innerText = String.fromCharCode(65 + index) + ". " + choice;
+
+        li.onclick = () => selectChoice(index);
+
+        choicesEl.appendChild(li);
+    });
+}
+
+function selectChoice(index) {
+    selected = index;
+    const items = document.querySelectorAll("#choices li");
+    const nextBtn = document.getElementById('next-btn');
+
+    if(selected === quiz[current].answer){
+        items[index].style.backgroundColor = '#00FF61';
+    }else{
+        items[quiz[current].answer].style.backgroundColor = '#00FF61';
+        items[index].style.backgroundColor = '#FF0000';
+        
+    } 
+
+    items.forEach((item, i) => {
+        if (i !== quiz[current].answer) {
+            item.style.opacity = "0";
+        }
+
+        if(i > 0 ){
+            item.style.position = 'relative';
+            item.style.top = 0;
+        }
+        
+    });
+
+
+    items.forEach(item => {
+        item.style.pointerEvents = "none";
+    });
+
+    nextBtn.disabled = false;
+    nextBtn.classList.remove('opacity-0');
+    nextBtn.classList.add('opacity-100');
+    nextBtn.classList.add('cursor-pointer');
+}
+
+function nextQuestion() {
+
+    if (selected === quiz[current].answer) {
+      score++;
+    }
+
+
+    current++;
+    selected = null;
+    const nextBtn = document.getElementById('next-btn');
+    nextBtn.classList.remove('opacity-100');
+    nextBtn.classList.add('opacity-0');
+    nextBtn.classList.remove('cursor-pointer');
+    nextBtn.disabled = true;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        document.querySelector("main").innerHTML =
+            `<h2 class="text-white text-xl">Score: ${score}/${quiz.length}</h2>`;
+    }
+}
+
+loadQuestion();
+
+    </script>
+
+    @vite(['resources/css/app.css', ])
 </body>
 </html>
