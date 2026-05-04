@@ -31,13 +31,19 @@
     <main class="w-full h-[calc(100dvh-80px)] flex items-center justify-center flex-col gap-3">
     
         <!-- QUESTION -->
-        <div id="question"
-            class="max-w-[300px] w-full py-5 text-black text-center flex items-center justify-center rounded-xl px-3 bg-[#CEF2F2]">
+        <div class="max-w-[300px] w-full py-5 text-black  flex flex-col  rounded-xl px-3 bg-[#CEF2F2]">
+            <div id="question" class="w-full flex items-center justify-center text-center">
+
+            </div>
+            <div id="explanationContainer" class="w-full mt-5 text-[10px] flex opacity-0 justify-end flex-col min-h-[0px]">
+                <span id="explanationHeader" class="font-bold hidden">Explanation:</span>
+                <span id="explanationBody" class="hidden">sadkj</span>
+            </div>
         </div>
 
         <!-- CHOICES -->
         <ul id="choices"
-            class="w-full flex flex-col gap-2 items-center text-black min-h-[200px] bg-red-100">
+            class="w-full flex flex-col gap-2 items-center text-black min-h-[200px] ">
         </ul>
 
         <button 
@@ -94,6 +100,8 @@ function selectChoice(index) {
     selected = index;
     const items = document.querySelectorAll("#choices li");
     const nextBtn = document.getElementById('next-btn');
+    const choicesContainer = document.getElementById('choices');
+    const explanationContainer = document.getElementById('explanationContainer');
 
     if(selected === quiz[current].answer){
         items[index].style.backgroundColor = '#00FF61';
@@ -102,21 +110,48 @@ function selectChoice(index) {
         items[index].style.backgroundColor = '#FF0000';
         
     } 
+    
 
+    // HIDE WRONG CHOICES
     setTimeout(() => {
+        
         items.forEach((item, i) => {
             if (i !== quiz[current].answer) {
-                item.classList.add('choices');
-                setTimeout(() => {
-
-                }, 1000);
+                item.classList.add('hidden');
             }
-
-        
-            
         });
+        
+    }, 1000);
+    // FADE IN
+    setTimeout(() => {
+        
+        items.forEach((item, i) => {
+            if (i === quiz[current].answer) {
+                item.classList.add('fadeIn');
+            }
+        });
+        
     }, 1000);
 
+    setTimeout(() => {
+        choicesContainer.classList.add('hideContainer');
+        explanationContainer.classList.add('showContainer')
+        setTimeout(() => {
+            const explanationHeader = document.getElementById('explanationHeader');
+            const explanationBody = document.getElementById('explanationBody');
+            explanationHeader.classList.remove('hidden');
+            explanationHeader.classList.add('flex');
+            explanationBody.classList.remove('hidden');
+            explanationBody.classList.add('flex');
+        }, 500)
+    }, 1500);
+
+    // BUTTON ANIMATION
+    setTimeout(() => {
+        nextBtn.disabled = false;
+        nextBtn.classList.add('fadeIn');
+        nextBtn.classList.add('cursor-pointer');
+    },2500)
     
 
 
@@ -124,10 +159,7 @@ function selectChoice(index) {
         item.style.pointerEvents = "none";
     });
 
-    nextBtn.disabled = false;
-    nextBtn.classList.remove('opacity-0');
-    nextBtn.classList.add('opacity-100');
-    nextBtn.classList.add('cursor-pointer');
+    
 }
 
 function nextQuestion() {
@@ -140,10 +172,21 @@ function nextQuestion() {
     current++;
     selected = null;
     const nextBtn = document.getElementById('next-btn');
+    const choicesContainer = document.getElementById('choices');
+    const explanationContainer = document.getElementById('explanationContainer');
     nextBtn.classList.remove('opacity-100');
     nextBtn.classList.add('opacity-0');
     nextBtn.classList.remove('cursor-pointer');
     nextBtn.disabled = true;
+    choicesContainer.classList.remove('hideContainer');
+    explanationContainer.classList.remove('showContainer')
+
+    const explanationHeader = document.getElementById('explanationHeader');
+    const explanationBody = document.getElementById('explanationBody');
+    explanationHeader.classList.remove('flex');
+    explanationHeader.classList.add('hidden');
+    explanationBody.classList.remove('flex');
+    explanationBody.classList.add('hidden');
 
     if (current < quiz.length) {
         loadQuestion();
