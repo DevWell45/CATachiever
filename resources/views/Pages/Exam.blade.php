@@ -37,7 +37,7 @@
 
         <!-- CHOICES -->
         <ul id="choices"
-            class="w-full flex flex-col gap-2 items-center justify-center text-black relative">
+            class="w-full flex flex-col gap-2 items-center text-black min-h-[200px] bg-red-100">
         </ul>
 
         <button 
@@ -103,17 +103,21 @@ function selectChoice(index) {
         
     } 
 
-    items.forEach((item, i) => {
-        if (i !== quiz[current].answer) {
-            item.style.opacity = "0";
-        }
+    setTimeout(() => {
+        items.forEach((item, i) => {
+            if (i !== quiz[current].answer) {
+                item.classList.add('choices');
+                setTimeout(() => {
 
-        if(i > 0 ){
-            item.style.position = 'relative';
-            item.style.top = 0;
-        }
+                }, 1000);
+            }
+
         
-    });
+            
+        });
+    }, 1000);
+
+    
 
 
     items.forEach(item => {
@@ -153,6 +157,6 @@ loadQuestion();
 
     </script>
 
-    @vite(['resources/css/app.css', ])
+    @vite(['resources/css/app.css', 'resources/css/pages/exam.css' ])
 </body>
 </html>
