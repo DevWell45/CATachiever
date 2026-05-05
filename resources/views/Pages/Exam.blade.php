@@ -37,7 +37,7 @@
             </div>
             <div id="explanationContainer" class="w-full mt-5 text-[10px] flex opacity-0 justify-end flex-col min-h-[0px]">
                 <span id="explanationHeader" class="font-bold hidden">Explanation:</span>
-                <span id="explanationBody" class="hidden">sadkj</span>
+                <span id="explanationBody" class="hidden"></span>
             </div>
         </div>
 
@@ -59,21 +59,41 @@
     <script>
         const quiz = [
     {
-        question: "What is the value of x in the equation: 2x + 5 = 15?",
-        choices: ["x = 5", "x = 10", "x = 3", "x = 7"],
-        answer: 0
+        question: "What is the area of a triangle with base 10 cm and height 6 cm?",
+        choices: ["20 cm²", "30 cm²", "40 cm²", " 50 cm²"],
+        answer: 0,
+        explanation: "2x + 5 = 15 Remove the +5 by subtracting 5 → 2x = 10  Now divide by 2 → x = 5"
     },
     {
-        question: "What is 5 + 3?",
-        choices: ["6", "7", "8", "9"],
-        answer: 2
+        question: "Find 20% of 150.",
+        choices: ["25", "30", "35", "40"],
+        answer: 1,
+        explanation: "20% is equal to 0.20 \n 0.20 × 150 = 30"
+    },
+    {
+        question: "Find the next term:  2, 4, 6, 10, 16, _",
+        choices: ["20", "22", "24", "26"],
+        answer: 3,
+        explanation: "Pattern: add previous two numbers 6+10=16, then 10+16=26"
+    },
+    {
+        question: "What is 25% of 200?",
+        choices: ["25", "40", "50", "75"],
+        answer: 2,
+        explanation : "25% is equal to 0.25 \n 0.25 × 200 = 50"
+    },
+    {
+        question: "Find the missing number:  2, 3, 5, 8, 13, _",
+        choices: ["18", "20", "21", "24"],
+        answer: 2,
+        explanation: "Pattern: add previous two 5+8=13, then 8+13=21"
     }
 ];
 
-let currentIndex = Math.floor(Math.random() * quiz.length);
+// let currentIndex = Math.floor(Math.random() * quiz.length);
 
 
-let current = currentIndex;
+let current = 0;
 let selected = null;
 let score = 0;
 
@@ -81,6 +101,10 @@ function loadQuestion() {
     const q = quiz[current];
 
     document.getElementById("question").innerText = q.question;
+    document.getElementById("explanationBody").innerText = q.explanation;
+    const nextBtn = document.getElementById('next-btn');
+
+    
 
     const choicesEl = document.getElementById("choices");
     choicesEl.innerHTML = "";
@@ -174,8 +198,7 @@ function nextQuestion() {
     const nextBtn = document.getElementById('next-btn');
     const choicesContainer = document.getElementById('choices');
     const explanationContainer = document.getElementById('explanationContainer');
-    nextBtn.classList.remove('opacity-100');
-    nextBtn.classList.add('opacity-0');
+    nextBtn.classList.remove('fadeIn');
     nextBtn.classList.remove('cursor-pointer');
     nextBtn.disabled = true;
     choicesContainer.classList.remove('hideContainer');
@@ -187,6 +210,10 @@ function nextQuestion() {
     explanationHeader.classList.add('hidden');
     explanationBody.classList.remove('flex');
     explanationBody.classList.add('hidden');
+
+    if(current === quiz.length - 1){
+        nextBtn.innerText = "Done";
+    }
 
     if (current < quiz.length) {
         loadQuestion();
