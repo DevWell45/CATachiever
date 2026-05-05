@@ -120,7 +120,7 @@
     </div>
 
     @include('Hidden_Forms.logout')
-    @vite(['resources/js/app.js','resources/css/app.css', 'resources/js/functions/Auth/Logout.js', 'resources/js/functions/pages/Home.js'])
+    @vite(['resources/js/app.js','resources/css/app.css', 'resources/js/functions/Auth/logout.js', 'resources/js/functions/pages/Home.js'])
     
 </body>
 </html>
