@@ -43,7 +43,7 @@
                 </p>
 
                 <form action="/login" method="POST" class="flex flex-col gap-[clamp(0.6rem,1.8dvh,1rem)]">
-
+                    @csrf
                     {{-- Email --}}
                     <div class="flex flex-col gap-1">
                         <label class="ps-1 font-semibold text-gray-700"
