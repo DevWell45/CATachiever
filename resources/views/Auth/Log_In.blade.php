@@ -48,7 +48,7 @@
                     <div class="flex flex-col gap-1">
                         <label class="ps-1 font-semibold text-gray-700"
                                style="font-size:clamp(0.7rem,1.7dvh,0.85rem)">Email</label>
-                        <input type="email" placeholder="example@gmail.com"
+                        <input type="email" placeholder="example@gmail.com" name="email"
                                class="border border-gray-200 rounded-full ps-5 outline-none bg-gray-50
                                       w-full text-gray-700 focus:border-[#128C40] focus:bg-white
                                       transition-all duration-200"
@@ -59,7 +59,7 @@
                     <div class="flex flex-col gap-1">
                         <label class="ps-1 font-semibold text-gray-700"
                                style="font-size:clamp(0.7rem,1.7dvh,0.85rem)">Password</label>
-                        <input type="password" placeholder="••••••••••••"
+                        <input type="password" placeholder="••••••••••••" name="password"
                                class="border border-gray-200 rounded-full ps-5 outline-none bg-gray-50
                                       w-full placeholder:text-gray-400 focus:border-[#128C40] focus:bg-white
                                       transition-all duration-200"
