@@ -6,5 +6,5 @@ use App\Http\Controllers\Controller;
 
 class SendOTP extends Controller
 {
-    
+    //
 }
