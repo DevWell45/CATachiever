@@ -82,7 +82,7 @@
 
                     <div class="flex justify-center items-center gap-1.5 pb-2 text-xs">
                         <span class="text-gray-500">Already have an account?</span>
-                        <a href="#" class="text-[#128C40] font-semibold hover:underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-[#128C40] font-semibold hover:underline">Log in</a>
                     </div>
                 </form>
             </div>

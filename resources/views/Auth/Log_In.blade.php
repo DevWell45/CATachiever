@@ -92,7 +92,7 @@
                                 pt-[clamp(0.1rem,0.8dvh,0.4rem)]"
                          style="font-size:clamp(0.65rem,1.5dvh,0.78rem)">
                         <span class="text-gray-500">Don't have an account?</span>
-                        <a href="#" class="text-[#128C40] font-semibold hover:underline">Sign up</a>
+                        <a href="{{ route('signup') }}" class="text-[#128C40] font-semibold hover:underline">Sign up</a>
                     </div>
 
                 </form>
