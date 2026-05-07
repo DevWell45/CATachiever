@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'otp' => $otp_code,
             'otp_expires_at' => Carbon::now()->addMinutes(10),
         ]);
-        Mail::to($user->email)->afterCommit()->queue(new \App\Mail\SendOtpMail($otp_code));
+        Mail::to($user->email)->queue(new \App\Mail\SendOtpMail($otp_code));
 
         $otp_session = [
             'otp_id' => Str::random(40),
