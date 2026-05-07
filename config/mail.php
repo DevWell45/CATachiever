@@ -98,6 +98,8 @@ return [
         ],
         'sendinblue' => [
             'transport' => 'mailjet',
+            'key' => env('BREVO_API_KEY'),     
+            'secret' => 'not-needed',
         ],
 
     ],
