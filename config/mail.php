@@ -37,19 +37,29 @@ return [
     */
 
     'mailers' => [
-
         'smtp' => [
             'transport' => 'smtp',
-            'scheme' => env('MAIL_SCHEME'),
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp-relay.brevo.com'),//'127.0.0.1'
-            'port' => env('MAIL_PORT', 465),
-            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+            'host' => env('MAIL_HOST', '127.0.0.1'),
+            'port' => env('MAIL_PORT', 2525),
+            'encryption' => env('MAIL_ENCRYPTION'),
             'username' => env('MAIL_USERNAME'),
-            'password' => $cleanedPassword,
-            'timeout' => 20,
+            'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
+
+        // 'smtp' => [
+        //     'transport' => 'smtp',
+        //     'scheme' => env('MAIL_SCHEME'),
+        //     'url' => env('MAIL_URL'),
+        //     'host' => env('MAIL_HOST', 'smtp-relay.brevo.com'),//'127.0.0.1'
+        //     'port' => env('MAIL_PORT', 465),
+        //     'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+        //     'username' => env('MAIL_USERNAME'),
+        //     'password' => $cleanedPassword,
+        //     'timeout' => 20,
+        //     'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        // ],
 
         'ses' => [
             'transport' => 'ses',
