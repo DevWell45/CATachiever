@@ -103,6 +103,9 @@ return [
             'key' => env('BREVO_API_KEY'),     
             'secret' => 'not-needed',
         ],
+        'mailjet' => [
+            'transport' => 'mailjet',
+        ],
 
     ],
 
