@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'otp' => $otp_code,
             'otp_expires_at' => Carbon::now()->addMinutes(10),
         ]);
-        Mail::to($user->email)->send(new \App\Mail\SendOtpMail($otp_code));
+        
 
         $otp_session = [
             'otp_id' => Str::random(40),
@@ -34,6 +34,7 @@ class RegisterController extends Controller
         ];
 
         session(['otp_session' => $otp_session]);
+        Mail::to($user->email)->send(new \App\Mail\SendOtpMail($otp_code));
 
         return redirect()->route('account_verification');
     }
