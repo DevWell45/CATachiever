@@ -21,7 +21,6 @@ class RegisterController extends Controller
 
         $otp_code = rand(100000, 999999);
 
-        // 1. Create user first
         $user = User::create([
             'name' => $validated_data['name'],
             'email' => $validated_data['email'],
@@ -30,9 +29,12 @@ class RegisterController extends Controller
             'otp_expires_at' => Carbon::now()->addMinutes(10),
         ]);
 
-        // 2. HTML email (your design simplified but safe for API)
         $htmlContent = "
             <div style='font-family: Arial; text-align:center; padding:20px;'>
+                <div style='margin-bottom:20px;'>
+                    <img src='https://catachiever.up.railway.app/images/components/Logo.png' width='100'>
+                </div>
+                <h2 style='color:#26AF5A; margin-bottom:10px;'> CATchiever </h2>
                 <h2 style='color:#128C40;'>Email Verification</h2>
                 <p>Your OTP code is:</p>
                 <div style='font-size:30px; font-weight:bold; letter-spacing:5px; margin:20px 0;'>
@@ -42,7 +44,6 @@ class RegisterController extends Controller
             </div>
         ";
 
-        // 3. Send email via Brevo API (NO SDK)
         $response = Http::withHeaders([
             'api-key' => env('BREVO_API_KEY'),
             'Content-Type' => 'application/json',
@@ -59,7 +60,6 @@ class RegisterController extends Controller
             'htmlContent' => $htmlContent,
         ]);
 
-        // 4. Debug failed email (IMPORTANT)
         if (!$response->successful()) {
             \Log::error('Brevo Error: ' . $response->body());
 
@@ -68,7 +68,6 @@ class RegisterController extends Controller
             ]);
         }
 
-        // 5. OTP session
         session([
             'otp_session' => [
                 'otp_id' => Str::random(40),
