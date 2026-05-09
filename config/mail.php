@@ -129,6 +129,9 @@ return [
         'mailjet' => [
             'transport' => 'mailjet',
         ],
+        'brevo' => [
+            'transport' => 'brevo',
+        ],
 
     ],
 
