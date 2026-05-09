@@ -19,13 +19,31 @@ class RegisterController extends Controller
         ]);
         $otp_code = rand(100000, 999999);
 
-        $user = User::create([
-            'name' => $validated_data['name'], 
-            'email' => $validated_data['email'],
-            'password' => bcrypt($validated_data['password']),
-            'otp' => $otp_code,
-            'otp_expires_at' => Carbon::now()->addMinutes(10),
-        ]);
+        try {
+            Mail::to($validated_data['email'])
+                ->send(new \App\Mail\SendOtpMail($otp_code));
+
+            $user = User::create([
+                'name' => $validated_data['name'], 
+                'email' => $validated_data['email'],
+                'password' => bcrypt($validated_data['password']),
+                'otp' => $otp_code,
+                'otp_expires_at' => Carbon::now()->addMinutes(10),
+            ]);
+
+        } catch (\Exception $e) {
+            return back()->withErrors([
+                'email' => 'Failed to send OTP email.'
+            ]);
+        }
+
+        // $user = User::create([
+        //     'name' => $validated_data['name'], 
+        //     'email' => $validated_data['email'],
+        //     'password' => bcrypt($validated_data['password']),
+        //     'otp' => $otp_code,
+        //     'otp_expires_at' => Carbon::now()->addMinutes(10),
+        // ]);
         
 
         $otp_session = [
@@ -34,7 +52,7 @@ class RegisterController extends Controller
         ];
 
         session(['otp_session' => $otp_session]);
-        Mail::to($user->email)->send(new \App\Mail\SendOtpMail($otp_code));
+        // Mail::to($user->email)->send(new \App\Mail\SendOtpMail($otp_code));
 
         return redirect()->route('account_verification');
     }
