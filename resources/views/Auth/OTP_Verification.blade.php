@@ -73,12 +73,16 @@
 
                     @csrf
                     {{-- OTP inputs --}}
+                    
                     <div class="otp-grid container-type-inline my-2">
-                        @for ($i = 0; $i < 6; $i++)
-                        <input type="text" maxlength="1" name="otp[]"
-                               class="otp-input"
-                               inputmode="numeric" pattern="[0-9]*">
-                        @endfor
+                    
+                        <input type="text" maxlength="1" name="otp1" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" name="otp2" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" name="otp3" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" name="otp4" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" name="otp5" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                        <input type="text" maxlength="1" name="otp6" class="otp-input" inputmode="numeric" pattern="[0-9]*">
+                    
                     </div>
 
                     {{-- Submit --}}
