@@ -163,6 +163,14 @@
                     </div>
                 </div>
 
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p style="color:red">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
                 <button type="submit"
                         class="w-full bg-[#128c40] hover:bg-[#0e6e32] text-white font-bold rounded-full cursor-pointer shadow-md hover:shadow-xl tracking-wide transition-all duration-200 mt-6"
                         style="height:clamp(44px,5.5vh,54px); font-size:clamp(0.95rem,1.5vw,1.1rem)">
