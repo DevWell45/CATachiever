@@ -21,6 +21,14 @@ class LoginController extends Controller
         if (Auth::user()->email_verified_at === null) {
             $otp_code = rand(100000, 999999);
             $user_id = User::where('email', $credentials['email'])->value('id');
+            $user = User::where('email', $credentials['email'])->first();
+
+            if ($user) {
+                $user->update([
+                    'otp' => $otp_code,
+                    'otp_expires_at' =>Carbon:: now()->addMinutes(10)
+                ]);
+            }
             User::where('email', $credentials['email'])->update(['otp' => $otp_code, 'otp_expires_at' => Carbon::now()->addMinutes(10)]);
             $otp_session = ['email' => $credentials['email'], 'user_id' => $user_id];
             session(['otp_session' => $otp_session]);
