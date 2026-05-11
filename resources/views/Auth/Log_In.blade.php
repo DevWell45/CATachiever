@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAT Achiever | Log in</title>
+    <title>CATchiever | Log in</title>
     <link rel="shortcut icon" href="{{ asset('images/components/Logo.png') }}" type="image/x-icon">
 </head>
 <body class="w-screen h-screen overflow-hidden bg-[#128C40] font-sans">
@@ -23,12 +23,11 @@
                      class="object-contain mb-1 drop-shadow-lg"
                      style="width:clamp(52px,8dvh,80px); height:clamp(52px,8dvh,80px)">
                 <h1 class="font-bold leading-tight m-0 tracking-wide"
-                    style="font-size:clamp(1.2rem,3.5dvh,1.9rem)">NVSU</h1>
-                <h3 class="font-bold leading-tight m-0"
-                    style="font-size:clamp(1rem,3dvh,1.5rem)">AchieVR</h3>
-                <div class="w-16 h-[3px] bg-yellow-300 rounded-full my-1"></div>
+                    style="font-size:clamp(1.2rem,3.5dvh,1.9rem)">CATchiever</h1>
+                
+                <div class="w-20 h-[3px] bg-yellow-300 rounded-full my-1"></div>
                 <p class="font-medium m-0 opacity-90 tracking-wide"
-                   style="font-size:clamp(0.65rem,1.6dvh,0.8rem)">Virtual Reality Quiz Game</p>
+                   style="font-size:clamp(0.65rem,1.6dvh,0.8rem)">Quiz Game</p>
             </div>
 
             {{-- White form body --}}
@@ -113,10 +112,9 @@
                  style="width:clamp(90px,11vw,170px); height:clamp(90px,11vw,170px)">
 
             <div class="text-center">
-                <h1 class="font-bold m-0 leading-none tracking-widest"
-                    style="font-size:clamp(2rem,4.5vw,3.5rem)">CAT</h1>
-                <h3 class="font-bold m-0 leading-none tracking-wide"
-                    style="font-size:clamp(1.3rem,3vw,2.2rem)">Achiever</h3>
+                <h1 class="font-bold m-0 leading-none tracking-wide"
+                    style="font-size:clamp(2rem,4.5vw,3.5rem)">CATchiever</h1>
+                
             </div>
 
             <div class="bg-yellow-300 rounded-full"
@@ -124,7 +122,7 @@
 
             <div class="text-center">
                 <h5 class="font-semibold m-0 leading-none opacity-95"
-                    style="font-size:clamp(0.8rem,1.4vw,1.15rem)">Virtual Reality Quiz Game</h5>
+                    style="font-size:clamp(0.8rem,1.4vw,1.15rem)">Quiz Game</h5>
                 <h6 class="font-medium m-0 mt-2 leading-none opacity-75"
                     style="font-size:clamp(0.65rem,0.9vw,0.8rem)">Nueva Vizcaya State University</h6>
             </div>

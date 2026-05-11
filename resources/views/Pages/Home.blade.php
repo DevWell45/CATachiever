@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAT Achiever</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>CATchiever</title>
     <link rel="shortcut icon" href="{{ asset('images/components/Logo.png') }}" type="image/x-icon">
 </head>
 <body class="w-full h-[100dvh] overflow-hidden bg-[#128C40]">
@@ -114,7 +115,10 @@
                 <h4 class="text-white font-bold text-base sm:text-lg md:text-xl px-4 py-4 tracking-wide sticky top-0 bg-[#128C40] z-10">
                     Choose a Category
                 </h4>
-                <category-lists></category-lists>
+                <category-lists 
+                    :exam-url="'{{ route('exam_url') }}'" 
+                    :csrf-token="'{{ csrf_token() }}'"
+                ></category-lists>
             </div>
         </main>
     </div>

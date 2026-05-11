@@ -4,7 +4,7 @@
 
             <!-- MATHEMATICS CATEGORY -->
             <div class="category-type bg-blue-600 flex items-center relative group cursor-pointer"
-                 @click="$emit('select', 'mathematics')">
+                 @click="startMath">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 p-2 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path fill-rule="evenodd" d="M6.32 1.827a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V19.5a3 3 0 0 1-3 3H6.75a3 3 0 0 1-3-3V4.757c0-1.47 1.073-2.756 2.57-2.93ZM7.5 11.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H8.25a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H8.25Zm-.75 3a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H8.25a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V18a.75.75 0 0 0-.75-.75H8.25Zm1.748-6a.75.75 0 0 1 .75-.75h.007a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.007a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75h-.007Zm-.75 3a.75.75 0 0 1 .75-.75h.007a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.007a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 0 0 .75-.75V18a.75.75 0 0 0-.75-.75h-.007Zm1.754-6a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75h-.008Zm-.75 3a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V18a.75.75 0 0 0-.75-.75h-.008Zm1.748-6a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Zm.75 1.5a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75h-.008Zm-8.25-6A.75.75 0 0 1 8.25 6h7.5a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75v-.75Zm9 9a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-2.25Z" clip-rule="evenodd" />
@@ -23,7 +23,7 @@
 
             <!-- ENGLISH CATEGORY -->
             <div class="category-type bg-green-600 flex items-center relative group cursor-pointer"
-                 @click="$emit('select', 'english')">
+                 @click="startEnglish">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 p-2 flex items-center justify-center">
                     <span class="text-2xl">📚</span>
                 </div>
@@ -40,7 +40,7 @@
 
             <!-- SCIENCE CATEGORY -->
             <div class="category-type bg-purple-600 flex items-center relative group cursor-pointer"
-                 @click="$emit('select', 'science')">
+                @click="startScience">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 p-2 flex items-center justify-center">
                     <span class="text-2xl">🔬</span>
                 </div>
@@ -57,7 +57,7 @@
 
             <!-- GENERAL KNOWLEDGE CATEGORY -->
             <div class="category-type bg-red-600 flex items-center relative group cursor-pointer"
-                 @click="$emit('select', 'general-knowledge')">
+                @click="startGK">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 p-2 flex items-center justify-center">
                     <span class="text-2xl">🌐</span>
                 </div>
@@ -74,7 +74,7 @@
 
             <!-- ABSTRACT REASONING CATEGORY -->
             <div class="category-type bg-yellow-500 flex items-center relative group cursor-pointer"
-                 @click="$emit('select', 'abstract-reasoning')">
+                @click="startAR">
                 <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 p-2 flex items-center justify-center">
                     <span class="text-2xl">🧩</span>
                 </div>
@@ -91,10 +91,95 @@
 
         </div>
     </div>
+
+    <!-- MATHEMATICS -->
+     <form ref="mathForm" :action="props.examUrl" method="POST"  class="hidden">
+        <input type="hidden" name="category" value="Mathematics">
+     </form>
+
+     <!-- ENGLISH -->
+     <form ref="englishForm" :action="props.examUrl" method="POST"  class="hidden">
+        <input type="hidden" name="category" value="English">
+     </form>
+
+     <!-- SCIENCE -->
+     <form ref="scienceForm" :action="props.examUrl" method="POST"  class="hidden">
+        <input type="hidden" name="category" value="Science">
+     </form>
+
+     <!-- GENERAL KNOWLEDGE -->
+     <form ref="GKForm" :action="props.examUrl" method="POST"  class="hidden">
+        <input type="hidden" name="category" value="General Knowledge">
+     </form>
+
+     <!-- ABSTRACT REASONING -->
+     <form ref="ARForm" :action="props.examUrl" method="POST"  class="hidden">
+        <input type="hidden" name="category" value="Abstract Reasoning">
+     </form>
 </template>
 
 <script setup>
-defineEmits(['select'])
+
+import {ref} from 'vue'
+
+const props = defineProps({
+    examUrl: String,
+    csrfToken: String
+})
+
+function addCsrf(form) {
+    let input = form.querySelector('input[name="_token"]')
+
+    if (!input) {
+        input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = '_token'
+        form.appendChild(input)
+    }
+
+    input.value = props.csrfToken
+}
+
+
+// MATHEMATICS
+const mathForm = ref(null);
+function startMath() {
+    addCsrf(mathForm.value)
+    mathForm.value.submit()
+}
+
+
+// ENGLISH
+const englishForm = ref(null);
+function startEnglish(){
+    addCsrf(englishForm.value)
+    englishForm.value.submit()
+}
+
+// SCIENCE
+const scienceForm = ref(null);
+function startScience(){
+    addCsrf(scienceForm.value)
+    scienceForm.value.submit()
+}
+
+// ENGLISH
+const GKForm = ref(null);
+function startGK(){
+    addCsrf(GKForm.value)
+    GKForm.value.submit()
+}
+
+// AR
+const ARForm = ref(null);
+function startAR(){
+    addCsrf(ARForm.value)
+    ARForm.value.submit()
+}
+
+
+
+
 </script>
 
 <style scoped>

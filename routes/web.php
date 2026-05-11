@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResendOTPController;
 use App\Http\Controllers\Auth\VerifyOTPController;
+use App\Http\Controllers\HiddenForms\ExamCategoryController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -46,11 +47,27 @@ Route::middleware(['auth'])->group(function(){
     })->name('home_page');
 
     Route::get('/exam', function(){
-        return view('Pages.Exam');
+        $category = session('category');
+
+        if(!$category){
+            return redirect()->route('home_page');
+        }
+        
+        return view('Pages.Exam', compact(
+            'category',
+        ));
     })->name('exam_page');
 
+    Route::post('/exam_session',[ExamCategoryController::class, 'Category'])->name('exam_url');
     Route::post('/logout', [LogoutController::class, 'logout']);
     
+    
+});
+
+Route::get('/questions', function(){
+        return view('Admin.Pages.Questions');
+    });
+Route::middleware(['auth', 'admin'])->group(function(){
     
 });
 
