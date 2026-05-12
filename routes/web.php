@@ -64,9 +64,70 @@ Route::middleware(['auth'])->group(function(){
     
 });
 
+Route::get('/dashboard', function(){
+    $username = 'Jimwell Raza';
+    return view('Admin.Pages.Dashboard',compact(
+        'username'
+    ))->with([
+        // TABLET and COMPUTER NAVIGATION BAR
+        'D_TaC' => 'active', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
+        // MOBILE NAVIGATION BAR
+        'D_mobile' => 'mobile', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
+
+        // OTHERS
+        'Current_Page' => 'Good Morning! 👋',
+
+    ]);
+})->name('dashboard_page');
+
+Route::get('/users', function(){
+    $username = 'Jimwell Raza';
+    return view('Admin.Pages.Users',compact(
+        'username'
+    ))->with([ 
+        // TABLET and COMPUTER NAVIGATION BAR
+        'D_TaC' => 'inactive', 'U_TaC' => 'active', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
+        // MOBILE NAVIGATION BAR
+        'D_mobile' => 'inactive', 'U_mobile' => 'mobile', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
+
+        // OTHERS
+        'Current_Page' => 'Users',
+
+    ]);
+})->name('users_page');
+
 Route::get('/questions', function(){
-        return view('Admin.Pages.Questions');
-    });
+    $username = 'Jimwell Raza';
+    return view('Admin.Pages.Questions',compact(
+        'username'
+    ))->with([ 
+        // TABLET and COMPUTER NAVIGATION BAR
+        'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'active', 'F_TaC' => 'inactive',
+        // MOBILE NAVIGATION BAR
+        'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'mobile', 'F_mobile' => 'inactive',
+
+        // OTHERS
+        'Current_Page' => 'Questions',
+
+    ]);
+})->name('questions_page');
+
+Route::get('/feedbacks', function(){
+    $username = 'Jimwell Raza';
+    return view('Admin.Pages.Feedbacks',compact(
+        'username'
+    ))->with([ 
+        // TABLET and COMPUTER NAVIGATION BAR
+        'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'active',
+        // MOBILE NAVIGATION BAR
+        'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'mobile',
+
+        // OTHERS
+        'Current_Page' => 'Feedbacks',
+
+    ]);
+})->name('feedbacks_page');
+
 Route::middleware(['auth', 'admin'])->group(function(){
     
 });

@@ -1,0 +1,39 @@
+.nav-a {
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 8px;
+    height: 45px;
+    color: white;
+    gap: 10px;
+}
+
+.nav-a svg {
+    width: 25px;
+    height: 25px;
+}
+
+.active {
+    border: none;
+    border-left: 4px yellow solid;
+    background: #128c40;
+    color: #8BF7B4;
+}
+
+.mobile-ul svg{
+    width: 24px;
+    height: 24px;
+}
+.mobile-ul span{
+    font-size: 13px;
+    font-weight: 600;
+}
+.mobile{
+    color: #0E5D2C;
+}
+
+.nav-a:hover {
+    background: #119243ad;
+}

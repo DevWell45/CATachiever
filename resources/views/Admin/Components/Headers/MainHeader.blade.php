@@ -3,8 +3,8 @@
 
         <div class="flex flex-col">
             <h2 class="text-[#8BF7B4] md:text-lg text-sm leading-tight">Admin Panel</h2>
-            <h1 class="md:text-2xl text-md tracking-wide font-bold text-white -mt-1 leading-none">
-                Questions
+            <h1 class="md:text-2xl text-xl tracking-wide font-bold text-white -mt-1 leading-none">
+                {{ $Current_Page }}
             </h1>
         </div>
 
