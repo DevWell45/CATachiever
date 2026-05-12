@@ -76,6 +76,14 @@
                            style="font-size:clamp(0.65rem,1.5dvh,0.78rem)">Forgot Password?</a>
                     </div>
 
+                    @if ($errors->any())
+                        <div>
+                            @foreach ($errors->all() as $error)
+                                <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
                     {{-- Submit --}}
                     <button type="submit"
                             class="w-full bg-[#128c40] hover:bg-[#0e6e32] text-white font-bold
@@ -164,6 +172,14 @@
                         Forgot Password?
                     </a>
                 </div>
+
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
                 {{-- Submit --}}
                 <button type="submit"

@@ -74,6 +74,14 @@
                                style="height:clamp(38px,5dvh,48px); font-size:0.85rem">
                     </div>
 
+                    @if ($errors->any())
+                        <div>
+                            @foreach ($errors->all() as $error)
+                                <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
                     {{-- Submit --}}
                     <button type="submit"
                             class="w-full bg-[#128c40] hover:bg-[#0e6e32] text-white font-bold rounded-full cursor-pointer shadow-md transition-all mt-2"
@@ -166,7 +174,7 @@
                 @if ($errors->any())
                     <div>
                         @foreach ($errors->all() as $error)
-                            <p style="color:red">{{ $error }}</p>
+                            <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
                         @endforeach
                     </div>
                 @endif
