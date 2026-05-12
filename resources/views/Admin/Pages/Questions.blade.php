@@ -156,114 +156,19 @@
 
     <div id="app" class="w-full h-full flex flex-col overflow-auto">
 
-        {{-- SIDE BAR --}}
-        <nav class="w-[250px] md:flex flex-col hidden h-full bg-[#26AF5A] border-[#808080] border-r-1 border-r fixed px-3">
-            <div class="w-full h-[70px] border-b border-b-gray-600 border-b-1 flex items-center justify-start gap-2">
-                <img src="{{ asset('images/components/Logo.png') }}" alt="CATchiever Logo" width="40px">
-                <span class="text-white font-semibold">CATchiever</span>
-            </div>
-            <ul class="w-full mt-3">
-                <li>
-                    <a href="" class="nav-a">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                        </svg>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
+        {{-- LEFT NAVIGATION BAR (TABLET and COMPUTER) --}}
+        @include('Admin.Components.Navigation.TabletAndComputerNav')
 
-                <li>
-                    <a href="" class="nav-a">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                        </svg>
-                        <span>Users</span>
-                    </a>
-                </li>
+        {{-- BOTTOM NAVIGATION BAR (MOBILE) --}}
+        @include('Admin.Components.Navigation.MobileNav')
 
-                <li>
-                    <a href="" class="nav-a active">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-                        </svg>
-                        <span>Questions</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="" class="nav-a">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
-                        </svg>
-                        <span>Feedbacks</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <main class="md:w-[calc(100%-250px)] md:ml-[250px] sm:w-full flex flex-col p-2">
-            <header class="sticky top-0 bg-[#26AF5A] w-full md:h-[170px] h-[140px] rounded-xl md:px-4 px-3 py-2">
-                <div class="w-full md:h-[90px] h-[70px] flex flex-row justify-between pt-3">
-
-                    <div class="flex flex-col">
-                        <h2 class="text-[#8BF7B4] md:text-lg text-sm leading-tight">Admin Panel</h2>
-                        <h1 class="md:text-2xl text-md tracking-wide font-bold text-white -mt-1 leading-none">
-                            Questions
-                        </h1>
-                    </div>
-
-                    <div>
-                        <div class="rounded-full text-xl w-[35px] h-[35px] bg-cyan-300 text-black flex items-center justify-center font-bold cursor-pointer">
-                            J
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full h-[70px] flex items-start pt-1 justify-center">
-                    <div class="flex items-center justify-start md:w-[80%] w-full border-[0.5px] border-gray-400 bg-[#128C40] md:h-[45px] h-[40px] rounded-xl text-white md:text-md text-[12px]">
-                        <div id="searchIcon" class="w-[50px] h-full flex items-center justify-center cursor-text">
-                            <svg class="w-[20px] h-[20px] md:w-[20px] md:h-[20px] text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                        </div>
-                        <input type="search" id="searchInput" placeholder="Search Question here..." class="outline-none w-[calc(100%-50px)] h-full">
-                    </div>
-                </div>
-            </header>
+        <main class="md:w-[calc(100%-250px)] md:ml-[250px] sm:w-full flex flex-col md:p-2 p-1">
+            
+            {{-- HEADER BAR --}}
+            @include('Admin.Components.Headers.MainHeader')
 
             {{-- CARDS SECTION --}}
-            <section class="grid grid-cols-3 px-3 py-4 w-full gap-6">
-                <div class="bg-[#f1f1f1] h-[70px] rounded-xl flex items-center justify-start p-3 gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[35px] h-[35px] text-[#0E5D2C]">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-                    </svg>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-2xl leading-tight">453</span>
-                        <p class="text-sm text-[#808080] -mt-1 leading-none">TOTAL QUESTIONS</p>
-                    </div>
-                </div>
-
-                <div class="bg-[#f1f1f1] h-[70px] rounded-xl flex items-center justify-start p-3 gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[35px] h-[35px] text-[#0E5D2C]">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                    </svg>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-2xl leading-tight">5</span>
-                        <p class="text-sm text-[#808080] -mt-1 leading-none">CATEGORIES</p>
-                    </div>
-                </div>
-
-                <div class="bg-[#f1f1f1] h-[70px] rounded-xl flex items-center justify-start p-3 gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[35px] h-[35px] text-[#0E5D2C]">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-2xl leading-tight">57</span>
-                        <p class="text-sm text-[#808080] -mt-1 leading-none">NEW QUESTIONS</p>
-                    </div>
-                </div>
-            </section>
+            @include('Admin.Components.Cards.InfoCards_Totals')
 
             {{-- CATEGORY LISTS CARD --}}
             <section class="category-lists px-3 w-full flex flex-row gap-3 text-white text-xs font-semibold overflow-auto">
@@ -317,7 +222,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">1</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What is the area of a triangle with base 10 cm and height 6 cm?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What is the area of a triangle with base 10 cm and height 6 cm?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">30 cm²</u></p>
@@ -338,14 +243,14 @@
                         </div>
                     </div>
 
-                    @for ($i = 0; $i <= 4; $i++)
+                    @for ($i = 0; $i <= 0; $i++)
                     <div class="flex flex-row p-2 bg-[#f1f1f1] rounded-lg gap-1 px-3 justify-between">
                         <div class="flex flex-row">
                             <div class="w-[50px] h-full flex items-center justify-center">
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">{{ $i + 2 }}</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What is 25% of 200?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What is 25% of 200?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">50</u></p>
@@ -387,7 +292,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">1</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">Which of the following is a synonym for "benevolent"?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">Which of the following is a synonym for "benevolent"?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Kind</u></p>
@@ -415,7 +320,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">{{ $i + 2 }}</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What is the plural form of "criterion"?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What is the plural form of "criterion"?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Criteria</u></p>
@@ -457,7 +362,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">1</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What is the chemical symbol for water?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What is the chemical symbol for water?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">H₂O</u></p>
@@ -485,7 +390,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">{{ $i + 2 }}</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What planet is known as the Red Planet?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What planet is known as the Red Planet?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Mars</u></p>
@@ -527,7 +432,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">1</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">What is the capital of the Philippines?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">What is the capital of the Philippines?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Manila</u></p>
@@ -555,7 +460,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">{{ $i + 2 }}</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">How many provinces does the Philippines have?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">How many provinces does the Philippines have?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">82</u></p>
@@ -597,7 +502,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">1</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">Which shape comes next in the pattern: circle, square, triangle, circle, square, ___?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">Which shape comes next in the pattern: circle, square, triangle, circle, square, ___?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Triangle</u></p>
@@ -625,7 +530,7 @@
                                 <h1 class="w-[30px] h-[30px] bg-[#128c40] rounded-full text-white font-bold flex items-center justify-center">{{ $i + 2 }}</h1>
                             </div>
                             <div class="flex flex-col p-2">
-                                <p class="text-[16px] h-[85%]">If all bloops are razzles and all razzles are lazzles, are all bloops definitely lazzles?</p>
+                                <p class="md:text-[16px] text-sm h-[85%]">If all bloops are razzles and all razzles are lazzles, are all bloops definitely lazzles?</p>
                                 <div class="flex flex-row items-center gap-3 text-xs text-[#808080] h-[15%]">
                                     <span class="text-[#26AF5A] font-bold">1 pt.</span>
                                     <p>Correct Answer: <u class="text-[#26AF5A]">Yes</u></p>
