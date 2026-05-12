@@ -77,7 +77,7 @@
                     @if ($errors->any())
                         <div>
                             @foreach ($errors->all() as $error)
-                                <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
+                                <p class="text-red-500 text-xs w-full flex items-center justify-center py-2">{{ $error }}</p>
                             @endforeach
                         </div>
                     @endif
@@ -174,7 +174,7 @@
                 @if ($errors->any())
                     <div>
                         @foreach ($errors->all() as $error)
-                            <p style="color:red w-full flex items-center justify-center py-2">{{ $error }}</p>
+                            <p class="text-red-500 text-xs w-full flex items-center justify-center py-2">{{ $error }}</p>
                         @endforeach
                     </div>
                 @endif
