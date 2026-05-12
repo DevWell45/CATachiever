@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center text-white">
-                    <div id="show-dropdown" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-bold text-lg cursor-pointer">
+                    <div id="show-dropdown" class="w-[35px] h-[35px] rounded-full bg-black flex items-center justify-center font-bold text-xl cursor-pointer">
                         {{ auth()->user()->name[0] }}
                     </div>
                 </div>
