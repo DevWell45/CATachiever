@@ -177,9 +177,6 @@ function startAR(){
     ARForm.value.submit()
 }
 
-
-
-
 </script>
 
 <style scoped>

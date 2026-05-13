@@ -39,10 +39,9 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 });
 
-
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/home', function(){
+     Route::get('/home', function(){
         return view('Pages.Home');
     })->name('home_page');
 
@@ -64,72 +63,81 @@ Route::middleware(['auth'])->group(function(){
     
 });
 
-Route::get('/dashboard', function(){
-    $username = 'Jimwell Raza';
-    return view('Admin.Pages.Dashboard',compact(
-        'username'
-    ))->with([
-        // TABLET and COMPUTER NAVIGATION BAR
-        'D_TaC' => 'active', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
-        // MOBILE NAVIGATION BAR
-        'D_mobile' => 'mobile', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
-
-        // OTHERS
-        'Current_Page' => 'Good Morning! 👋',
-
-    ]);
-})->name('dashboard_page');
-
-Route::get('/users', function(){
-    $username = 'Jimwell Raza';
-    return view('Admin.Pages.Users',compact(
-        'username'
-    ))->with([ 
-        // TABLET and COMPUTER NAVIGATION BAR
-        'D_TaC' => 'inactive', 'U_TaC' => 'active', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
-        // MOBILE NAVIGATION BAR
-        'D_mobile' => 'inactive', 'U_mobile' => 'mobile', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
-
-        // OTHERS
-        'Current_Page' => 'Users',
-
-    ]);
-})->name('users_page');
-
-Route::get('/questions', function(){
-    $username = 'Jimwell Raza';
-    return view('Admin.Pages.Questions',compact(
-        'username'
-    ))->with([ 
-        // TABLET and COMPUTER NAVIGATION BAR
-        'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'active', 'F_TaC' => 'inactive',
-        // MOBILE NAVIGATION BAR
-        'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'mobile', 'F_mobile' => 'inactive',
-
-        // OTHERS
-        'Current_Page' => 'Questions',
-
-    ]);
-})->name('questions_page');
-
-Route::get('/feedbacks', function(){
-    $username = 'Jimwell Raza';
-    return view('Admin.Pages.Feedbacks',compact(
-        'username'
-    ))->with([ 
-        // TABLET and COMPUTER NAVIGATION BAR
-        'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'active',
-        // MOBILE NAVIGATION BAR
-        'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'mobile',
-
-        // OTHERS
-        'Current_Page' => 'Feedbacks',
-
-    ]);
-})->name('feedbacks_page');
 
 Route::middleware(['auth', 'admin'])->group(function(){
+
     
+
+    Route::get('/dashboard', function(){
+        $username = 'Jimwell Raza';
+
+        $users = User::select('name', 'email','role')->get();
+
+        return view('Admin.Pages.Dashboard',compact(
+            'username',
+            'users',
+
+        ))->with([
+            // TABLET and COMPUTER NAVIGATION BAR
+            'D_TaC' => 'active', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
+            // MOBILE NAVIGATION BAR
+            'D_mobile' => 'mobile', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
+
+            // OTHERS
+            'Current_Page' => 'Dashboard',
+
+        ]);
+    })->name('dashboard_page');
+
+    Route::get('/users', function(){
+
+        $users = User::select('name', 'email','role')->get();
+        return view('Admin.Pages.Users',compact(
+            'users'
+        ))->with([ 
+            // TABLET and COMPUTER NAVIGATION BAR
+            'D_TaC' => 'inactive', 'U_TaC' => 'active', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
+            // MOBILE NAVIGATION BAR
+            'D_mobile' => 'inactive', 'U_mobile' => 'mobile', 'Q_mobile' => 'inactive', 'F_mobile' => 'inactive',
+
+            // OTHERS
+            'Current_Page' => 'Users',
+
+        ]);
+    })->name('users_page');
+
+    Route::get('/questions', function(){
+        $username = 'Jimwell Raza';
+        return view('Admin.Pages.Questions',compact(
+            'username'
+        ))->with([ 
+            // TABLET and COMPUTER NAVIGATION BAR
+            'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'active', 'F_TaC' => 'inactive',
+            // MOBILE NAVIGATION BAR
+            'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'mobile', 'F_mobile' => 'inactive',
+
+            // OTHERS
+            'Current_Page' => 'Questions',
+
+        ]);
+    })->name('questions_page');
+
+    Route::get('/feedbacks', function(){
+        $username = 'Jimwell Raza';
+        return view('Admin.Pages.Feedbacks',compact(
+            'username'
+        ))->with([ 
+            // TABLET and COMPUTER NAVIGATION BAR
+            'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'active',
+            // MOBILE NAVIGATION BAR
+            'D_mobile' => 'inactive', 'U_mobile' => 'inactive', 'Q_mobile' => 'inactive', 'F_mobile' => 'mobile',
+
+            // OTHERS
+            'Current_Page' => 'Feedbacks',
+
+        ]);
+    })->name('feedbacks_page');
+
 });
 
 
