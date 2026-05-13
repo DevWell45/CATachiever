@@ -30,4 +30,8 @@
 </script>
 
 <style scope>
+    .users-ul li:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
 </style>

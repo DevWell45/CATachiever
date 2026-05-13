@@ -17,7 +17,7 @@
         {{-- BOTTOM NAVIGATION BAR (MOBILE) --}}
         @include('Admin.Components.Navigation.MobileNav')
 
-        <main class="md:w-[calc(100%-250px)] md:ml-[250px] sm:w-full flex flex-col md:p-2 p-1 gap-3">
+        <main class="md:w-[calc(100%-250px)] md:ml-[250px] sm:w-full flex flex-col md:p-2 p-1">
             
             {{-- HEADER BAR --}}
             @include('Admin.Components.Headers.MainHeader')
@@ -25,7 +25,7 @@
             {{-- CARDS SECTION --}}
             @include('Admin.Components.Cards.InfoCards_Totals')
 
-            <div class=" w-full flex items-center justify-between px-2 text-white">
+            <div class=" w-full flex items-center justify-between px-2 text-white my-3">
                 <h3 class="text-xl font-bold ">Admins</h3>
                 <button type="button" id="openAddModal" class="fixed right-3 md:py-2.5 py-2 md:px-3 px-2 md:rounded-xl rounded-lg md:gap-2 gap-1 text-white font-semibold flex flex-row md:text-sm text-[10px] bg-[#26AF5A] border items-center cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="md:w-[20px] w-[15px]">
@@ -37,7 +37,7 @@
 
             <users-lists :users='@json($users->where('role', 'admin'))'></users-lists>
 
-            <div class=" w-full flex items-center justify-between px-2 text-white">
+            <div class=" w-full flex items-center justify-between px-2 text-white my-3">
                 <h3 class="text-xl font-bold ">Students</h3>
             </div>
 

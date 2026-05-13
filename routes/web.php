@@ -66,8 +66,6 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['auth', 'admin'])->group(function(){
 
-    
-
     Route::get('/dashboard', function(){
         $username = 'Jimwell Raza';
 
@@ -92,8 +90,23 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/users', function(){
 
         $users = User::select('name', 'email','role')->get();
+
+        $total = ([
+            'counted' => $users->count(),
+            'identifier' => 'TOTAL USERS'
+        ]);
+        $fixed_number = ([
+            'counted' => $users->where('role', 'admin')->count(),
+            'identifier' => 'TOTAL ADMINS'
+        ]);
+        $new = ([
+            'counted' => '12',
+            'identifier' => 'NEW USERS'
+        ]);
+
         return view('Admin.Pages.Users',compact(
-            'users'
+            'users',
+            'total', 'fixed_number', 'new'
         ))->with([ 
             // TABLET and COMPUTER NAVIGATION BAR
             'D_TaC' => 'inactive', 'U_TaC' => 'active', 'Q_TaC' => 'inactive', 'F_TaC' => 'inactive',
@@ -106,10 +119,24 @@ Route::middleware(['auth', 'admin'])->group(function(){
         ]);
     })->name('users_page');
 
+    // ==============================================================================================================
+    // ==============================================================================================================
+
     Route::get('/questions', function(){
-        $username = 'Jimwell Raza';
+        $total = ([
+            'counted' => '453',
+            'identifier' => 'TOTAL QUESTIONS'
+        ]);
+        $fixed_number = ([
+            'counted' => '5',
+            'identifier' => 'CATEGORIES'
+        ]);
+        $new = ([
+            'counted' => '12',
+            'identifier' => 'NEW QUESTIONS'
+        ]);
         return view('Admin.Pages.Questions',compact(
-            'username'
+            'total', 'fixed_number', 'new'
         ))->with([ 
             // TABLET and COMPUTER NAVIGATION BAR
             'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'active', 'F_TaC' => 'inactive',
@@ -122,10 +149,25 @@ Route::middleware(['auth', 'admin'])->group(function(){
         ]);
     })->name('questions_page');
 
+    // ==============================================================================================================
+    // ==============================================================================================================
+
     Route::get('/feedbacks', function(){
-        $username = 'Jimwell Raza';
+        $total = ([
+            'counted' => '57',
+            'identifier' => 'FEEDBACKS'
+        ]);
+        $fixed_number = ([
+            'counted' => '12',
+            'identifier' => 'RESOLVED'
+        ]);
+        $new = ([
+            'counted' => '7',
+            'identifier' => 'NEW FEEDBACKS'
+        ]);
         return view('Admin.Pages.Feedbacks',compact(
-            'username'
+            'total', 'fixed_number', 'new',
+
         ))->with([ 
             // TABLET and COMPUTER NAVIGATION BAR
             'D_TaC' => 'inactive', 'U_TaC' => 'inactive', 'Q_TaC' => 'inactive', 'F_TaC' => 'active',
