@@ -35,13 +35,13 @@
                 </button>
             </div>
 
-            <users-lists :users='@json($users->where('role', 'admin'))'></users-lists>
+            <users-lists :users='@json($users->where('role', 'admin')->values())'></users-lists>
 
             <div class=" w-full flex items-center justify-between px-2 text-white my-3">
                 <h3 class="text-xl font-bold ">Students</h3>
             </div>
 
-            <users-lists :users='@json($users->where('role', 'student'))'></users-lists>
+            <users-lists :users='@json($users->where('role', 'student')->values())'></users-lists>
             
         </main>
 

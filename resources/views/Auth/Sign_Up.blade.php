@@ -194,6 +194,6 @@
         </div>
     </div>
 
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/css/app.css'])
 </body>
 </html>

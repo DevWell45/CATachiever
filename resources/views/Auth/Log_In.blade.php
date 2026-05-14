@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATchiever | Log in</title>
     <link rel="shortcut icon" href="{{ asset('images/components/Logo.png') }}" type="image/x-icon">
+    <style>
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
+
+        input[type="password"]::-webkit-credentials-auto-fill-button,
+        input[type="password"]::-webkit-textfield-decoration-container {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="w-screen h-screen overflow-hidden bg-[#128C40] font-sans">
 
@@ -41,6 +52,14 @@
                     Log in to review and ace your entrance exam
                 </p>
 
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p class="text-red-500 text-md w-full flex items-center justify-center py-2">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
                 <form action="/login" method="POST" class="flex flex-col gap-[clamp(0.6rem,1.8dvh,1rem)]">
                     @csrf
                     {{-- Email --}}
@@ -55,14 +74,31 @@
                     </div>
 
                     {{-- Password --}}
-                    <div class="flex flex-col gap-1">
+                    <div class="flex flex-col gap-1 relative">
                         <label class="ps-1 font-semibold text-gray-700"
                                style="font-size:clamp(0.7rem,1.7dvh,0.85rem)">Password</label>
                         <input type="password" placeholder="••••••••••••" name="password"
                                class="border border-gray-200 rounded-full ps-5 outline-none bg-gray-50
                                       w-full placeholder:text-gray-400 focus:border-[#128C40] focus:bg-white
                                       transition-all duration-200"
+                                id="passwordInput_mobile"
                                style="height:clamp(40px,6dvh,52px); font-size:clamp(0.85rem,1.8dvh,1rem)">
+                        
+                        {{-- OPEN EYE --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
+                            class="flex z-[100] size-6 absolute right-4 bottom-2 cursor-pointer text-gray-600 flex"
+                            id="openedEye_mobile">
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                            <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                        </svg>
+                        {{-- CLOSE EYE --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
+                            class="hidden z-[100] size-6 absolute right-4 bottom-2 cursor-pointer text-gray-600"
+                            id="closedEye_mobile">
+                            <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+                            <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+                            <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+                        </svg>
                     </div>
 
                     {{-- Remember / Forgot --}}
@@ -74,15 +110,7 @@
                         </label>
                         <a href="#" class="text-[#128C40] font-semibold hover:underline"
                            style="font-size:clamp(0.65rem,1.5dvh,0.78rem)">Forgot Password?</a>
-                    </div>
-
-                    @if ($errors->any())
-                        <div>
-                            @foreach ($errors->all() as $error)
-                                <p class="text-red-500 text-xs w-full flex items-center justify-center py-2">{{ $error }}</p>
-                            @endforeach
-                        </div>
-                    @endif
+                    </div>                    
 
                     {{-- Submit --}}
                     <button type="submit"
@@ -139,13 +167,23 @@
         {{-- Right panel --}}
         <div class="w-1/2 h-full flex items-center justify-start px-8 lg:px-16">
 
-            <form action="/login" method="POST" class="w-full max-w-[460px] bg-white rounded-3xl shadow-2xl flex flex-col px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(1.25rem,4vh,2.5rem)]">
+            <form action="/login" method="POST" 
+                class="w-full max-w-[460px] bg-white rounded-3xl shadow-2xl 
+                flex flex-col px-[clamp(1.5rem,3vw,2.5rem)] py-[clamp(1.25rem,4vh,2.5rem)]">
                 @csrf
                 <h4 class="font-bold m-0 text-gray-800 tracking-wide"
                     style="font-size:clamp(1.2rem,2.2vw,1.75rem)">Welcome Back!</h4>
                 <p class="text-gray-400 mt-1.5 mb-[clamp(1rem,3vh,2rem)] text-sm">
                     Log in to start reviewing and ace your entrance exam.
                 </p>
+
+                @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p class="text-red-500 text-md w-full flex items-center justify-center py-2">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
                 {{-- Email --}}
                 <div class="flex flex-col gap-1.5 mb-[clamp(0.6rem,2vh,1.1rem)]">
@@ -156,11 +194,31 @@
                 </div>
 
                 {{-- Password --}}
-                <div class="flex flex-col gap-1.5 mb-[clamp(0.6rem,2vh,1.1rem)]">
+                <div class="flex flex-col gap-1.5 mb-[clamp(0.6rem,2vh,1.1rem)] relative">
                     <label class="ps-2 font-semibold text-gray-700 text-sm">Password</label>
                     <input type="password" placeholder="••••••••" name="password"
-                           class="border border-gray-200 rounded-full px-5 outline-none bg-gray-50 w-full placeholder:text-xl placeholder:text-gray-400 focus:border-[#128C40] focus:bg-white transition-all duration-200"
+                        id="passwordInput_desktop"
+                           class="border border-gray-200 rounded-full px-5 outline-none bg-gray-50 w-full 
+                           placeholder:text-xl placeholder:text-gray-400 focus:border-[#128C40] focus:bg-white transition-all duration-200"
                            style="height:clamp(44px,5.5vh,56px)">
+                    {{-- OPEN EYE --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
+                        class="flex z-[100] size-6 absolute right-4 bottom-2.5 cursor-pointer text-gray-600 flex"
+                        id="openedEye_desktop">
+                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                    {{-- CLOSE EYE --}}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
+                        class="hidden z-[100] size-6 absolute right-4 bottom-2.5 cursor-pointer text-gray-600"
+                        id="closedEye_desktop">
+                        <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z" />
+                        <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z" />
+                        <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z" />
+                    </svg>
+
+
+
                 </div>
 
                 {{-- Remember / Forgot --}}
@@ -172,14 +230,6 @@
                         Forgot Password?
                     </a>
                 </div>
-
-                @if ($errors->any())
-                    <div>
-                        @foreach ($errors->all() as $error)
-                            <p class="text-red-500 text-xs w-full flex items-center justify-center py-2">{{ $error }}</p>
-                        @endforeach
-                    </div>
-                @endif
 
                 {{-- Submit --}}
                 <button type="submit"
@@ -202,5 +252,80 @@
     </div>
 
     @vite(['resources/css/app.css'])
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DESKTOP
+            const openedEye_desktop = document.getElementById('openedEye_desktop');
+            const closedEye_desktop = document.getElementById('closedEye_desktop');
+            const passwordInput_desktop = document.getElementById('passwordInput_desktop');
+
+            // MOBILE
+            const openedEye_mobile = document.getElementById('openedEye_mobile');
+            const closedEye_mobile = document.getElementById('closedEye_mobile');
+            const passwordInput_mobile = document.getElementById('passwordInput_mobile');
+
+            function updateEye() {
+
+                if (passwordInput_desktop.type === "password" && passwordInput_mobile.type === "password") {
+                //  openedEye_desktop
+                    openedEye_desktop.classList.remove('hidden');
+                    openedEye_desktop.classList.add('flex');
+                //  closedEye_desktop
+                    closedEye_desktop.classList.remove('flex');
+                    closedEye_desktop.classList.add('hidden');
+
+                //  openedEye_mobile
+                    openedEye_mobile.classList.remove('hidden');
+                    openedEye_mobile.classList.add('flex');
+                //  closedEye_mobile
+                    closedEye_mobile.classList.remove('flex');
+                    closedEye_mobile.classList.add('hidden');
+
+                } else {
+                //  closedEye_desktop
+                    closedEye_desktop.classList.remove('hidden');
+                    closedEye_desktop.classList.add('flex');
+                //  openedEye_desktop 
+                    openedEye_desktop.classList.remove('flex');
+                    openedEye_desktop.classList.add('hidden');
+                    
+                //  closedEye_mobile
+                    closedEye_mobile.classList.remove('hidden');
+                    closedEye_mobile.classList.add('flex');
+                //  openedEye_mobile 
+                    openedEye_mobile.classList.remove('flex');
+                    openedEye_mobile.classList.add('hidden');
+                }
+            }
+
+            // DESKTOP
+            openedEye_desktop.addEventListener('click', () => {
+                passwordInput_desktop.type = "text";
+                passwordInput_desktop.focus();
+                updateEye();
+            });
+
+            closedEye_desktop.addEventListener('click', () => {
+                passwordInput_desktop.type = "password";
+                passwordInput_desktop.focus();
+                updateEye();
+            });
+
+            // MOBILE
+            openedEye_mobile.addEventListener('click', () => {
+                passwordInput_mobile.type = "text";
+                passwordInput_mobile.focus();
+                updateEye();
+            });
+
+            closedEye_mobile.addEventListener('click', () => {
+                passwordInput_mobile.type = "password";
+                passwordInput_mobile.focus();
+                updateEye();
+            });
+
+            updateEye();
+        });
+    </script>
 </body>
 </html>
